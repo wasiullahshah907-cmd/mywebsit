@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d7db8">
+<title>USAMA NUSRAT HAYAT | IZA Service</title>
+<meta name="description" content="Digital work identification card for USAMA NUSRAT HAYAT. Work At Height.">
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef2f5;color:#17202a}
+.wrap{min-height:100vh;padding:24px 14px;display:flex;justify-content:center;align-items:center}
+.card{width:min(560px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 18px 55px #0002}
+.top{padding:28px 26px 20px;background:linear-gradient(135deg,#fff 0%,#f8fbfd 62%,#e6edf1 100%);border-bottom:4px solid #0d7db8}
+.logo{font-weight:900;font-size:28px;letter-spacing:-1px;color:#087db8}
+.logo span{color:#273277}.sub{font-size:11px;letter-spacing:3px;color:#8b3e76;margin-top:2px}
+.badge{display:inline-block;margin-top:18px;background:#fff;border-radius:30px;padding:9px 16px;font-weight:700;box-shadow:0 3px 14px #0001}
+.content{padding:24px 26px}
+.row{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.info{flex:1}.name{font-size:25px;font-weight:800;margin:0 0 20px}.line{margin:12px 0;font-size:15px;line-height:1.45}.label{display:block;color:#68737d;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}.value{font-weight:700}
+.qrbox{width:150px;text-align:center}.qrbox img{width:140px;height:140px;padding:7px;background:#fff;border-radius:10px;box-shadow:0 5px 18px #0002}.qrhint{font-size:11px;color:#68737d;margin-top:7px}
+.work{margin-top:22px;padding:14px 16px;border-radius:14px;background:#f0f5f7;text-align:center;font-weight:800;font-size:18px;color:#25303a}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:13px;padding:14px;text-align:center;text-decoration:none;font-weight:800;cursor:pointer;font-size:14px}.primary{background:#0d7db8;color:#fff}.secondary{background:#e9eef2;color:#17202a}
+.footer{padding:16px 26px 24px;text-align:center;color:#7b858d;font-size:12px}
+@media(max-width:480px){.row{flex-direction:column}.qrbox{width:100%;order:-1}.name{font-size:22px}.actions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<main class="card">
+<section class="top">
+  <div class="logo">LOVELEDS <span>•</span></div>
+  <div class="sub">CERTIFICATION & INSPECTION</div>
+  <div class="badge">Card No. 304555</div>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="info">
+      <h1 class="name">USAMA NUSRAT HAYAT</h1>
+      <div class="line"><span class="label">Company</span><span class="value">Saudi Aramco Contracting Co.</span></div>
+      <div class="line"><span class="label">ID No.</span><span class="value">2634541086</span></div>
+      <div class="line"><span class="label">Issue Date</span><span class="value">24/09/2026</span></div>
+      <div class="line"><span class="label">Expiry Date</span><span class="value">23/09/2027</span></div>
+    </div>
+    <div class="qrbox">
+      <img id="qr" alt="QR Code">
+      <div class="qrhint">Scan to open this digital card</div>
+    </div>
+  </div>
+
+  <div class="work">WORK AT HEIGHT</div>
+
+  <div class="actions">
+    <a class="btn primary" href="javascript:window.print()">Print / Save PDF</a>
+    <button class="btn secondary" onclick="downloadVCard()">Save Contact</button>
+  </div>
+</section>
+
+<div class="footer">Digital verification card • IZA Service</div>
+</main>
+</div>
+
+<script>
+const pageUrl = window.location.href;
+document.getElementById("qr").src =
+  "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(pageUrl);
+
+function downloadVCard(){
+  const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:USAMA NUSRAT HAYAT
+ORG:Saudi Aramco Contracting Co.
+NOTE:Card No. 304555 | ID No. 2634541086 | Work At Height | Expiry 23/09/2027
+END:VCARD`;
+  const blob = new Blob([vcard], {type:"text/vcard"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Usama_Nusrat_Hayat.vcf";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>

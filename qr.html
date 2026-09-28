@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IZA Service QR Generator</title>
+<style>
+body{font-family:Arial;margin:0;background:#eef2f5;display:grid;place-items:center;min-height:100vh}
+.box{background:#fff;padding:28px;border-radius:22px;text-align:center;box-shadow:0 15px 45px #0002;max-width:420px;width:calc(100% - 30px)}
+img{width:280px;max-width:100%;margin:15px auto}.btn{display:inline-block;background:#0d7db8;color:#fff;padding:13px 18px;border-radius:10px;text-decoration:none;font-weight:bold;border:0;cursor:pointer}
+small{color:#68737d;word-break:break-all}
+</style></head>
+<body><div class="box">
+<h2>IZA Service QR Code</h2>
+<p>Use this QR on the business card.</p>
+<img id="qr" alt="QR Code">
+<small id="url"></small><br><br>
+<button class="btn" onclick="downloadQR()">Download QR</button>
+</div>
+<script>
+const url=window.location.origin + window.location.pathname.replace(/qr\.html$/,'');
+document.getElementById('url').textContent=url;
+const src='https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data='+encodeURIComponent(url);
+document.getElementById('qr').src=src;
+function downloadQR(){const a=document.createElement('a');a.href=src;a.download='IZA-Service-QR.png';a.click();}
+</script></body></html>
